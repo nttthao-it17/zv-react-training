@@ -1,30 +1,32 @@
-import React, { useState } from 'react';
 import 'antd/dist/antd.css';
+import { useState } from 'react';
 import { Button } from 'antd';
 
-import Modal from './Modal';
-import { ModalStyle } from './modalStyle';
+import { SimpleModalStyle } from './SimpleModalStyle';
 
 const SimpleModal = () => {
-    const [showModal, setShowModal] = useState(false);
+    const [show, setShow] = useState(false);
 
     return (
-        <ModalStyle>
-            <div className='modal-main'>
+        <SimpleModalStyle>
+            <div className='simple-modal'>
                 <Button
-                    onClick={() => setShowModal(true)}
-                    disabled={!!showModal ? true : ''}
+                    className='open-button'
+                    onClick={() => setShow(true)}
+                    disabled={!!show ? true : ''}
                 >
-                    Open Modal
+                    Open Simple Modal
                 </Button>
-                <Modal
-                    show={showModal}
-                    children='This is a simple modal'
-                    handleClose={() => setShowModal(false)}
-                />
+                {
+                    !!show ?
+                        <div className='create-modal'>
+                            <h1>THIS IS SIMPLE MODAL</h1>
+                            <Button onClick={() => setShow(false)}>Close</Button>
+                        </div> :
+                        ''
+                }
             </div>
-        </ModalStyle>
-
+        </SimpleModalStyle>
     )
 }
 
