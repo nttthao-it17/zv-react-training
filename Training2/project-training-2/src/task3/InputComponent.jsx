@@ -10,6 +10,7 @@ const InputComponent = () => {
     const [counter, setCounter] = useState(value);
     const [showCountdown, setShowCountdown] = useState(false);
 
+    const [isStop, setIsStop] = useState(false);
 
     const handleChange = (event) => {
         setValue(event.target.value);
@@ -38,6 +39,8 @@ const InputComponent = () => {
             } else {
                 setShowCountdown(true);
                 setCounter(number);
+
+                setIsStop(true);
             }
         }
     }
@@ -61,6 +64,8 @@ const InputComponent = () => {
                     number={value}
                     counter={counter}
                     setCounter={setCounter}
+                    isStop={isStop}
+                    setIsStop={setIsStop}
                 />
             </div >
         </CoundownStyled>

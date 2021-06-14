@@ -1,9 +1,9 @@
 import 'antd/dist/antd.css';
 import { Button } from 'antd';
 
-const CloseButton = (props) => {
+const CloseButton = ({ handleClose }) => {
     return (
-        <Button className='btn-close' onClick={props.handleClose}>Close Modal</Button>
+        <Button className='btn-close' onClick={handleClose}>Close Modal</Button>
     )
 }
 

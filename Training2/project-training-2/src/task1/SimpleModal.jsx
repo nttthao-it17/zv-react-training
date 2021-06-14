@@ -3,9 +3,12 @@ import { useState } from 'react';
 import { Button } from 'antd';
 
 import { SimpleModalStyle } from './SimpleModalStyle';
+import BodyModal from './BodyModal';
 
 const SimpleModal = () => {
     const [show, setShow] = useState(false);
+
+    const onHideModal = () => setShow(false);
 
     return (
         <SimpleModalStyle>
@@ -17,14 +20,7 @@ const SimpleModal = () => {
                 >
                     Open Simple Modal
                 </Button>
-                {
-                    !!show ?
-                        <div className='create-modal'>
-                            <h1>THIS IS SIMPLE MODAL</h1>
-                            <Button onClick={() => setShow(false)}>Close</Button>
-                        </div> :
-                        ''
-                }
+                <BodyModal isShow={show} onHideModal={onHideModal} />
             </div>
         </SimpleModalStyle>
     )

@@ -10,6 +10,8 @@ const ShowModal = () => {
 
     const [showModal, setShowModal] = useState(false);
 
+    const onHideModal = () => setShowModal(false);
+
     return (
         <ModalStyle>
             <div className='modal-main'>
@@ -20,13 +22,10 @@ const ShowModal = () => {
                     Open Modal
                 </Button>
 
-                {!!showModal ?
-                    <Modal>
-                        Hello
-                        <CloseButton handleClose={() => setShowModal(false)} />
-                    </Modal> :
-                    ''
-                }
+                <Modal isShow={showModal}>
+                    Hello
+                    <CloseButton handleClose={onHideModal} />
+                </Modal>
             </div>
         </ModalStyle>
 
