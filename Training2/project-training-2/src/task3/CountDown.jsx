@@ -6,13 +6,19 @@ const CountDown = (props) => {
     const { show, number, counter, setCounter, isStop, setIsStop } = props;
 
     useEffect(() => {
-        if (!!isStop && counter > 0) {
-            const countdown = decreaseCountDown();
-            return () => clearInterval(countdown);
+        if (counter <= 0) {
+            setIsStop(false);
         }
-    }, [counter, isStop]);
+    }, [counter]);
 
-    const decreaseCountDown = () => setInterval(() => setCounter(counter - 1), 1000);
+    useEffect(() => {
+        if (isStop) {
+            const intervalId = setInterval(() => decreaseCountDown(), 1000);
+            return () => clearInterval(intervalId);
+        }
+    }, [isStop]);
+
+    const decreaseCountDown = () => setCounter((prevCounter) => prevCounter - 1);
 
     const handleStop = () => {
         setIsStop(false);
@@ -20,7 +26,7 @@ const CountDown = (props) => {
 
     return (
         <>
-            { !!show ?
+            {!!show ?
                 <div className='countdown'>
                     <h1>{number} countdown to 0</h1>
                     <p>{counter}</p>
