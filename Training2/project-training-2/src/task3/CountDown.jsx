@@ -7,13 +7,12 @@ const CountDown = (props) => {
 
     useEffect(() => {
         if (!!isStop && counter > 0) {
-            const countdown = setInterval(() => setCounter(counter - 1), 1000);
+            const countdown = decreaseCountDown();
             return () => clearInterval(countdown);
-        } else {
-            setIsStop(false);
-            clearInterval(counter);
         }
     }, [counter, isStop]);
+
+    const decreaseCountDown = () => setInterval(() => setCounter(counter - 1), 1000);
 
     const handleStop = () => {
         setIsStop(false);

@@ -39,7 +39,6 @@ const InputComponent = () => {
             } else {
                 setShowCountdown(true);
                 setCounter(number);
-
                 setIsStop(true);
             }
         }
